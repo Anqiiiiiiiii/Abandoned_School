@@ -47,33 +47,95 @@ maping_sch = {
 
 map = [
   ["chem", "math", "his", "gym"],
-  ["lab, english, psyc,front"],
-  ["bio", "wc", "cs", "cafe"]]
+  ["biology_lab", "english", "psyc", "front"],
+  ["bio", "wc", "cs", "cafe"]
+]
+map_width = len(map[0])
+map_height = len(map)
 
 
 position = {
-    "move":["up, down, right, left"]
+    "move":["north, south, west, east"]
 }
 
 bagpack = {
-    "player_tools":[""],
+    "player_tools":[],
 }
 
-player_positions = {
-    row:[0], 
-    col:[0]
+player_position = {
+    "row":0, 
+    "col":0
 }
+
+main1 = True
+
+
+def main_menu():
+    global main1
+    print("Welcom, scavenger, You are now in a school name Rechimons High School.")
+    print("Your mission is:\n1:Find the way to get out\n2:Find the missing knowledge")
+    print("Enter 1: For choosing direction\n")
+    print("Enter 2: For quit\n")
+    playerInput = int(input("Please make your first choice："))
+    m_des = True
+    while m_des:
+        try:
+            if playerInput == 1:
+                player_movement()
+                m_des = False
+            elif playerInput == 2:
+                main1 = False
+            else:
+                print("Wrong input number~")
+        except ValueError:
+            print("Please enter in number form, scavenger!")
+        else:
+            pass
+        finally:
+            pass
+
 
 def player_movement():
+    global main1
+    print("\nChoose the direction from following list\nEnter 'quit' if you want to quit")
+    print(position["move"])
     movement = input("Where do you want to go?")
-    if movement.lower() == "up":
-        player_position = map[player_positions[row + 1]][player_positions[col + 1]]
-    elif movement.lower() == "down":
-        pass
-    elif movement.lower() == "right":
-        pass
-    elif movement.lower() == "left":
-        pass
+    if movement.lower() == "north":
+        if player_position["row"] == 0:
+            print("You can't go North!")
+        else:
+            player_position["row"] = player_position["row"] - 1
+    elif movement.lower() == "south":
+        if player_position["row"] == map_height - 1:
+            print("You can't go South!")
+        else:
+            player_position["row"] = player_position["row"] + 1
+    elif movement.lower() == "east":
+        if player_position["col"] ==
+        player_position["col"] = player_position["col"] + 1
+    elif movement.lower() == "west":
+        player_position["col"] = player_position["col"] - 1
+    elif movement.lower() == "quit":
+        main1 = False
+    if main1:
+        print(maping_sch[map[player_position["row"]][player_position["col"]]]["description"])
     else:
         print("Wrong input~ please make sure enter the opition exist in the menu.")
-      
+
+
+def player_envir():
+    if now_pos == "chem":
+        print(maping_sch["chemistry_lab"]["description"])
+    elif now_pos == "math":
+        print(maping_sch["math_classroom"]["description"])
+    elif now_pos == "his":
+        print(maping_sch["history_classroom"]["description"])
+    elif now_pos == "gym":
+        print(maping_sch["gym"]["description"])
+
+
+while main1:
+    main_menu()
+    
+
+
