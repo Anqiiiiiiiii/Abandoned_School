@@ -1,3 +1,17 @@
+#############################################################
+# Title:calculator_cs30_part1
+# Class: CS30
+# Assignment: marvel_hero_game_v2
+# coder: Anqi Feng
+# Version: 2
+###########################################################
+"""This program will bring the user into a game name Abandoned school
+inside the game, the user will self-chossing their next action as a
+scanvengers. and they need to collect the missing knowledge as much 
+as they can.
+"""
+###########################################################
+# DATABASE---------------------------------------------------
 maping_sch = {
     "chemistry_lab":{
         "description":["This is the starting point. The lab is" 
@@ -99,6 +113,7 @@ player_pos = {
 }
 
 main1 = True
+# Functions ------------------------------------------------
 
 
 def main_menu():
@@ -199,7 +214,8 @@ def player_action():
     else:
         print("Wrong input!")
 
-
+            
+# Main--------------------------------------------------
 main_menu()
     
 
