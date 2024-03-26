@@ -155,6 +155,11 @@ def player_movement():
     wrongInput = True
     while wrongInput:
         movement = input("Where do you want to go? ")
+        print("\nScavengers you are now in:")
+        current_pos = map[player_pos["row"]][player_pos["col"]]
+        print("\ncurrent_pos)
+        if current_pos == "chemistry_lab":
+            print("Here is your starting point!")
         if movement.lower() == "north":
             if player_pos["row"] == 0:
                 print("You can't go North!")
@@ -213,9 +218,7 @@ def player_action():
         main1 = False
     else:
         print("Wrong input!")
-    print("\nScavengers you are now in:")
-    current_pos = map[player_pos["row"]][player_pos["col"]]
-    print("\n" + current_pos + "\n")
+
             
 # Main--------------------------------------------------
 main_menu()
