@@ -1,17 +1,14 @@
 from tabulate import tabulate
 
+# maps external filename
+mapfile = "map.txt"
 myfile = "map.txt"
-
+# information about player on reading map
 map = [["chemistry_lab", "math_classroom", "history_classroom", "gym"],
    [
        "biology_lab", "english_classroom", "psychological_classroom",
        "front"
    ], ["physic_lab", "washroom", "computer_science", "cafeteria"]]
-
-mapfile = 'map.txt'
-
-with open(mapfile, 'w') as file:
-    file.write(tabulate(map,tablefmt = 'fancy_grid'))
 
 map_width = len(map[0])
 map_height = len(map)
@@ -20,15 +17,13 @@ move = ["walk", "explore"]
 
 direction = ["north", "south", "west", "east"]
 
-bagpack = {
-"player_tools": [],
-}
-
 player_pos = {"row": 0, "col": 0}
 
-#function
+
 def read_map():
     try:
+        with open(mapfile, 'w') as file:
+            file.write(tabulate(map,tablefmt = 'fancy_grid'))
         with open(myfile, "r") as f:
             f2 = f.readlines()
     except:
