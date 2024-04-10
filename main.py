@@ -135,12 +135,10 @@ def player_action():
               print(file.read())
             player_movement()
         elif action.lower() == m.move[1]:
-            result = r.maping_sch[m.map[m.player_pos["row"]][
-                m.player_pos["col"]]]["tool"][0]
-            if result == "None":
-                print("There is nothing here")
-            else:
-                print("You found " + result)
+            i.function(r.maping_sch[m.map[m.player_pos["row"]][
+                      m.player_pos["col"]]]["tool"][0])
+            print("\nScavengers, now you have:\n")
+            print(i.player_tools)
         elif action.lower() == "quit":
             main1 = False
         else:
@@ -151,4 +149,3 @@ def player_action():
 
 # Main--------------------------------------------------
 main_menu()
-
