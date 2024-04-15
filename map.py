@@ -1,3 +1,4 @@
+# Import library
 from tabulate import tabulate
 
 # maps external filename
@@ -13,7 +14,7 @@ map = [["chemistry_lab", "math_classroom", "history_classroom", "gym"],
 map_width = len(map[0])
 map_height = len(map)
 
-move = ["walk", "explore"]
+player_action = ["walk", "explore", "check bagpack"]
 
 direction = ["north", "south", "west", "east"]
 
@@ -21,6 +22,9 @@ player_pos = {"row": 0, "col": 0}
 
 
 def read_map():
+    """This function create a visual map for reader after they 
+    input walk as their action option.
+    """
     try:
         with open(mapfile, 'w') as file:
             file.write(tabulate(map,tablefmt = 'fancy_grid'))
@@ -34,5 +38,5 @@ def read_map():
     finally:
         print("")
 
-read_map()
 
+read_map()

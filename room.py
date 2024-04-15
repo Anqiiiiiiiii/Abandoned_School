@@ -1,5 +1,6 @@
 from tabulate import tabulate
 
+# Database for room description and tools inside the room
 maping_sch = {
     "chemistry_lab": {
         "description": [
@@ -18,7 +19,7 @@ maping_sch = {
             "the lab, and slight mechanical hum and electrical cacophony" +
             "form the background sound."
         ],
-        "tool": ["ball"],
+        "tool": ["None"],
     },
     "biology_lab": {
         "description": [

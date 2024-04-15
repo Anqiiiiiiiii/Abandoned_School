@@ -3,12 +3,15 @@
 # Class: CS30
 # Assignment: abandoned_school
 # coder: Anqi Feng
-# Version: 5
+# Version: 6
 ###########################################################################
 """This program will bring the user into a game name Abandoned school
 inside the game, the user will self-chossing their next action as a
 scanvengers. and they need to collect the missing knowledge as much 
-as they can.
+as they can. Inside the game player could explore the tools that been
+place inside the room, and player could choose to pick them up and 
+put them into their bagpack. Checking what current inside the bagpack
+is allow inside this game. 
 """
 ###########################################################################
 #Library Import
@@ -16,8 +19,6 @@ from tabulate import tabulate
 import map as m
 import room as r
 import item as i
-# DATABASE---------------------------------------------------
-
 
 
 main1 = True
@@ -30,17 +31,17 @@ def main_menu():
     """
     global main1
     print(
-        "Welcom, scavenger, You are now in a school name Rechimons High School."
+        "Welcome, scavenger, You are now in a school name Rechimons High School."
     )
     print(
         "Your mission is:\n1:Find the way to get out\n2:Find the missing knowledge"
     )
-    print("Enter 1: For choosing an action\n")
-    print("Enter 2: For quit\n")
+    print("\nEnter 1: For choosing an action")
+    print("Enter 2: For quit")
     m_des = True
     while m_des:
         try:
-            playerInput = int(input("Please make your first choice："))
+            playerInput = int(input("\nPlease make your first choice："))
         except ValueError:
             print("Please enter in number form, scavenger!")
         else:
@@ -69,7 +70,7 @@ def player_movement():
     wrongInput = True
     while wrongInput:
         try:
-            movement = input("where do you want to go?")
+            movement = input("where do you want to go? ")
         except ValueError:
             print("Please enter in write form Scavanger.")
         else:
@@ -120,25 +121,34 @@ def player_action():
     try:
         current_pos = m.map[m.player_pos["row"]][m.player_pos["col"]]
         print("\nScavengers you are now in: " + current_pos)
-        room_info = r.maping_sch[m.map[m.player_pos["row"]][
-            m.player_pos["col"]]]["description"]
-        print("\n" + room_info[0] + "\n")
-        print("Choose what you want to do from following list\nEnter 'quit'" +
+        print("\nChoose what you want to do from following list\nEnter 'quit'" +
               " if you want to quit")
-        print(m.move)
-        action = input("What do you want to do? ")
+        print(m.player_action)
+        action = input("\nWhat do you want to do? ")
     except ValueError:
         print("Please enter in correct form Scavenger!")
     else:
-        if action.lower() == m.move[0]:
+        if action.lower() == m.player_action[0]:
             with open('map.txt', 'r') as file:
               print(file.read())
             player_movement()
-        elif action.lower() == m.move[1]:
-            i.function(r.maping_sch[m.map[m.player_pos["row"]][
-                      m.player_pos["col"]]]["tool"][0])
-            print("\nScavengers, now you have:\n")
+        elif action.lower() == m.player_action[1]:
+            room = r.maping_sch[m.map[m.player_pos["row"]][
+                    m.player_pos["col"]]]
+            room_info = room["description"]
+            print("\n" + room_info[0])
+            i.exploreTool(room["tool"][0])
+            print("\nScavengers, now you have:")
             print(i.player_tools)
+        elif action.lower() == m.player_action[2]:
+            print(f"\n{i.player_tools}")
+            print("\nEnter the tool's name for checking details")
+            check_bag = input("Enter 'NO' to skip checking: ")
+            print("\n")
+            if check_bag.lower() in i.player_tools:
+                print(i.item_sch[check_bag]["description"])
+            elif check_bag.lower() == "no":
+                print("skip!")
         elif action.lower() == "quit":
             main1 = False
         else:
