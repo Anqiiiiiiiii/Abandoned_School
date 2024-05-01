@@ -158,5 +158,4 @@ def player_action():
 
 
 # Main--------------------------------------------------
-print("For branches adding")
 main_menu()
