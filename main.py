@@ -34,7 +34,7 @@ def main_menu():
         "Welcome, scavenger, You are now in a school name Rechimons High School."
     )
     print(
-        "Your mission is:\n1:Find the way to get out\n2:Find the missing knowledge"
+        "Your mission is:\n1:Do some advanture in school\n2:Find the missing knowledge"
     )
     print("\nEnter 1: For choosing an action")
     print("Enter 2: For quit")
